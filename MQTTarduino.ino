@@ -7,7 +7,7 @@
  
 // Connect to the WiFi
 const char* ssid = "LearningFactory";
-const char* password =  "Factory1";
+const char* password =  "";
 const char* mqttServer = "104.238.164.118";
 const int mqttPort = 8883;
 const char* payload1 = "Warning! Passage broken!";
