@@ -1,0 +1,129 @@
+﻿Version=7.01
+NumberOfModules=7
+Module1=RoomDetail
+Module2=Motion
+Module3=Flame
+Module4=Wire
+Module5=Alarm
+Module6=Window
+Module7=Starter
+Build1=Default,b4a.example
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="19"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~
+IconFile=
+NumberOfFiles=7
+File1=Fire.bal
+File2=Home.bal
+File3=motion.bal
+File4=RoomDetail.bal
+File5=TheAlarm.bal
+File6=Window.bal
+File7=Wire.bal
+NumberOfLibraries=2
+Library1=core
+Library2=jmqtt
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: B4A Example
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: True
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	'Dim currentRoom As String = "initialize"
+	'Dim roomnum As Int = 0
+
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	'These variables can only be accessed from this module.
+
+	'Private Alarm As Button
+
+	Private Settings As Button
+	
+	'Private Monitor As ListView
+	
+	Private Title As Label
+
+
+	Private Panel3 As Panel
+	Private Panel4 As Panel
+	Private Panel5 As Panel
+	Private Panel6 As Panel
+	Private Panel7 As Panel
+	Private Panel8 As Panel
+	Private ImageView1 As ImageView
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	'Do not forget to load the layout file created with the visual designer. For example:
+	Activity.LoadLayout("home")
+
+
+
+End Sub
+
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+
+Public Sub SetState
+
+	If Starter.mqtt.Connected Then
+		If Starter.fire == "WARNING!!! EXTREME HEAT DETECTED IN HOUSE!" Or Starter.windowstat == "Warning, Glass is shattered." Then
+			ImageView1.Gravity = Gravity.FILL
+			ImageView1.Bitmap = LoadBitmap(File.DirAssets, "Warning.png")
+		Else
+			ImageView1.Gravity = Gravity.FILL
+			ImageView1.Bitmap = LoadBitmap(File.DirAssets, "shield-clipart-security-service-13.png")
+		End If
+
+	
+
+	End If
+	
+End Sub
+
+
+
+
+Sub Panel8_Click
+	StartActivity(Wire)
+End Sub
+
+Sub Panel7_Click
+	StartActivity(RoomDetail)
+End Sub
+
+Sub Panel6_Click
+	StartActivity(Alarm)
+End Sub
+
+Sub Panel5_Click
+	StartActivity(Flame)
+End Sub
+
+Sub Panel4_Click
+	StartActivity(Motion)
+End Sub
+
+Sub Panel3_Click
+	StartActivity(Window)
+End Sub
